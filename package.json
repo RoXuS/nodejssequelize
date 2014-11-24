@@ -1,0 +1,18 @@
+{
+  "name": "nodejssequelize",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "*",
+    "commander": "^2.5.0",
+    "mysql": "*",
+    "sequelize": "*",
+    "xlsjs": "^0.7.2"
+  }
+}
