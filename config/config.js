@@ -9,7 +9,7 @@ var config = function(callback){
   .authenticate()
   .then(callback)
   .catch(function(){
-      console.log('Connection has been established successfully.')
+      console.log('Unable to connect to mysql server.')
   });
 };
 

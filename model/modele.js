@@ -1,9 +1,10 @@
-var Modele = Container.db.define('Modele', {
-  name: Container.Sequelize.STRING,
-  dateto: Container.Sequelize.DATE,
-  datefrom: Container.Sequelize.DATE,
-  numberDoor: Container.Sequelize.STRING,
-  bodyType: Container.Sequelize.STRING
+var modele = Container.db.define('modele', {
+  mod_nom: Container.Sequelize.STRING,
+  mod_dated: Container.Sequelize.DATE,
+  mod_datef: Container.Sequelize.DATE,
+  mod_nbporte: Container.Sequelize.STRING,
+  mod_typecarrosserie: Container.Sequelize.STRING
 });
 
-module.exports = Modele;
+modele.hasMany(Container.model.article);
+module.exports = modele;
