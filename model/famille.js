@@ -4,4 +4,4 @@ var famille = Container.db.define('famille', {
 });
 
 famille.hasMany(Container.model.article);
-module.exports = Origin;
+module.exports = famille;

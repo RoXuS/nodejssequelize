@@ -8,8 +8,8 @@ var config = function(callback){
   Container.db
   .authenticate()
   .then(callback)
-  .catch(function(){
-      console.log('Unable to connect to mysql server.')
+  .catch(function(e){
+      console.log(e,'Unable to connect to mysql server.')
   });
 };
 

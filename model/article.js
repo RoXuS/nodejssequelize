@@ -5,12 +5,7 @@ var article = Container.db.define('article', {
   art_cote: Container.Sequelize.STRING,
   art_position: Container.Sequelize.STRING,
   art_prix: Container.Sequelize.INTEGER,
-  art_commentaire: Container.Sequelize.TEXT,
-
-
+  art_commentaire: Container.Sequelize.TEXT
 });
-
-article.hasMany(Container.model.modele);
-article.hasMany(Container.model.fournisseur);
 
 module.exports = article;

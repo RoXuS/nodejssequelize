@@ -3,4 +3,5 @@ var origin = Container.db.define('origin', {
 });
 
 origin.hasMany(Container.model.article);
-module.exports = Origin;
+module.exports = origin;
+

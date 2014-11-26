@@ -8,7 +8,9 @@ var fournisseur = Container.db.define('fournisseur', {
   fou_tel: Container.Sequelize.STRING,
   fou_email: Container.Sequelize.STRING,
   fou_remise: Container.Sequelize.INTEGER,
-  fou_pv: Container.Sequelize.INTEGER,
+  fou_pv: Container.Sequelize.INTEGER
 });
+
+fournisseur.hasMany(Container.model.article);
 
 module.exports = fournisseur;
