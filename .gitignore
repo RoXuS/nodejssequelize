@@ -1,0 +1,29 @@
+# OS / application
+*~
+*.swp
+*.swo
+.directory
+
+# IDE
+.idea
+nbproject/
+*.project
+.nbrun
+
+# Node.js
+node_modules
+npm-debug.log
+*.pid
+*.seed
+
+dox
+*.pem
+*.csr
+.settings
+.c9revisions/*
+bin/node
+bin/node-waf
+bin/npm
+data/*
+out
+reports

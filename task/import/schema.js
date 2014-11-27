@@ -1,11 +1,36 @@
 var schema = {
-  '3': {
+  'Marque': {
     'model': Container.model.marque,
-    'field': 'mar_nom',
+    'fields': {
+      '3': 'mar_nom',
+      '4': 'mar_label'
+    }
+  },
+  'Modele': {
+    'model': Container.model.modele,
+    'associated': {
+      'model': Container.model.marque,
+      'fieldName': 'mar_nom',
+      'index': '3'
+    },
+    'fields': {
+      '5': 'mod_nom',
+      '6': 'mod_dated',
+      '7': 'mod_datef',
+      '22': 'mod_nbporte',
+      '21': 'mod_typecarrosserie'
+    }
   }
 };
 
 module.exports = schema;
+
+//  mod_nom: Container.Sequelize.STRING,
+//   mod_dated: Container.Sequelize.DATE,
+//   mod_datef: Container.Sequelize.DATE,
+//   mod_nbporte: Container.Sequelize.STRING,
+//   mod_typecarrosserie: Container.Sequelize.STRING
+//
 
 //
 //
