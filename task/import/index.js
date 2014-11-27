@@ -1,4 +1,10 @@
-var schema = require('./schema.js');
+var parentSchema = require('./schema.js');
+var async = require('async');
+var array = [];
+
+Object.keys(parentSchema).forEach(function(key){
+  array.push(key);
+});
 
 var index = {
   process: function() {
@@ -17,49 +23,35 @@ var index = {
         var i = 0;
         articles.forEach(function(article) {
           if (i !== 0) {
-
-            // Marque
-            var marqueSchema = schema['Marque'];
-            var marqueSchemaFields = marqueSchema.fields;
-            var object = {};
-            Object.keys(marqueSchemaFields).forEach(function(marqueSchemaFieldsKey){
-              var value = marqueSchemaFields[marqueSchemaFieldsKey];
-              var key = marqueSchemaFieldsKey;
-              object[value] = article[key];
-            });
-            var marque = schema['Marque'].model.build(object);
-            marque.save(object).then(function(test, er) {
-            }).catch(function(e){
-              console.log(e);
-            });
-            // Marque
-
-            // Modele
-            var modeleSchema = schema['Modele'];
-            var modeleSchemaFields = modeleSchema.fields;
-            var object = {};
-            Object.keys(modeleSchemaFields).forEach(function(modeleSchemaFieldsKey){
-              var value = modeleSchemaFields[modeleSchemaFieldsKey];
-              var key = modeleSchemaFieldsKey;
-              object[value] = article[key];
-            });
-            var modele = schema['Modele'].model.build(object);
-            // Associated
-            var object = {};
-            object[modeleSchema.associated.fieldName] = article[modeleSchema.associated.index];
-            modeleSchema.associated.model.find(object).then(function(marque){
-              marque.addModele(modele);
-            });
-            modele.save().then(function(modele) {
-            }).catch(function(e){
-              console.log(e);
-            });
-            // Modele
+             async.eachSeries(array, function(key, callback){
+                var schema = parentSchema[key];
+                var schemaFields = schema.fields;
+                var object = {};
+                Object.keys(schemaFields).forEach(function(schemaFieldsKey){
+                  var value = schemaFields[schemaFieldsKey];
+                  var key = schemaFieldsKey;
+                  object[value] = article[key];
+                });
+                var buildObject = schema.model.build(object);
+                // Associated
+                if(schema.associated !== undefined) {
+                  var object = {};
+                  object[schema.associated.fieldName] = article[schema.associated.index];
+                  schema.associated.model.find(object).then(function(associatedObject){
+                    associatedObject[schema.associated.associatedFunction](buildObject);
+                  });
+                }
+                buildObject.save().then(function(){
+                  return callback();
+                }).catch(function(e){
+                  return callback();
+                  console.log(e);
+                });
+             }); 
           }
           i++;
         });
       }
-      //process.exit();
     });
   }
 };

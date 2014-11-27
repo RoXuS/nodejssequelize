@@ -1,5 +1,5 @@
 var marque = Container.db.define('marque', {
-  mar_nom: Container.Sequelize.STRING,
+  mar_nom: {type: Container.Sequelize.STRING, unique: true},
   mar_label: Container.Sequelize.STRING
 });
 

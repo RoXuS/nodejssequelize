@@ -11,7 +11,8 @@ var schema = {
     'associated': {
       'model': Container.model.marque,
       'fieldName': 'mar_nom',
-      'index': '3'
+      'index': '3',
+      'associatedFunction': 'addModele'
     },
     'fields': {
       '5': 'mod_nom',
@@ -20,17 +21,21 @@ var schema = {
       '22': 'mod_nbporte',
       '21': 'mod_typecarrosserie'
     }
+  },
+  'Origin': {
+    'model': Container.model.origin,
+    'fields': {
+      '29': 'ori_nom'
+    }
   }
 };
 
 module.exports = schema;
 
-//  mod_nom: Container.Sequelize.STRING,
-//   mod_dated: Container.Sequelize.DATE,
-//   mod_datef: Container.Sequelize.DATE,
-//   mod_nbporte: Container.Sequelize.STRING,
-//   mod_typecarrosserie: Container.Sequelize.STRING
-//
+
+/* Unicité modele */
+/* Fournisseur 1 colonne ?? */
+/* Origins bien origine ?*/
 
 //
 //

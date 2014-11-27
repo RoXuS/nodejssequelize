@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^0.9.0",
     "bluebird": "*",
     "commander": "^2.5.0",
     "excel-parser": "^0.2.2",
