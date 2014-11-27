@@ -11,6 +11,7 @@ var config = function(callback){
   .catch(function(e){
       console.log(e,'Unable to connect to mysql server.')
   });
+
 };
 
 module.exports = config;

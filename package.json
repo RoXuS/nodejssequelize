@@ -11,8 +11,8 @@
   "dependencies": {
     "bluebird": "*",
     "commander": "^2.5.0",
+    "excel-parser": "^0.2.2",
     "mysql": "*",
-    "sequelize": "*",
-    "xlsjs": "^0.7.2"
+    "sequelize": "1.7.10"
   }
 }
