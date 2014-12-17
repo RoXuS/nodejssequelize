@@ -3,7 +3,7 @@ Container.Sequelize = require('sequelize');
 var config = function(callback){
   Container.db = new Container.Sequelize('nodejssequelize', 'root', 'root', {
     host: "localhost",
-    dialect: "postgres"
+    dialect: "mysql"
   });
   Container.db
   .authenticate()
