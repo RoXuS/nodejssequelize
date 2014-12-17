@@ -1,5 +1,5 @@
 var index = {
-  process: function() {
+  process: function(callback) {
     Container.model.article.drop().then(function() {
       Container.model.fournisseur.drop().then(function() {
         Container.model.modele.drop().then(function() {
@@ -11,7 +11,11 @@ var index = {
                     Container.model.marque.sync().then(function() {
                       Container.model.modele.sync().then(function() {
                         Container.model.fournisseur.sync().then(function() {
-                          Container.model.article.sync();
+                          Container.model.article.sync().then(function(){
+                            if(callback !== undefined) {
+                              callback();
+                            }
+                          });
                         });
                       });
                     });

@@ -1,11 +1,17 @@
 var schema = {
   'Marque': {
     'model': Container.model.marque,
-    'fields': {
-      '3': 'mar_nom',
-      '3': 'mar_label'
-    }
-  },
+    'fields': [
+      {
+        'index': 3,
+        'fieldName': 'mar_label'
+      },
+      {
+        'index': 3,
+        'fieldName': 'mar_nom'
+      }
+    ]
+    },
   'Modele': {
     'model': Container.model.modele,
     'associated': [
@@ -16,40 +22,81 @@ var schema = {
         'associatedFunction': 'addModele'
       } 
     ],
-    'fields': {
-      '5': 'mod_nom',
-      '6': 'mod_dated',
-      '7': 'mod_datef',
-      '22': 'mod_nbporte',
-      '21': 'mod_typecarrosserie'
-    }
-  },
-  'Origin': {
-    'model': Container.model.origin,
-    'fields': {
-      '29': 'ori_nom'
-    }
-  },
-  'Famille': {
-    'model': Container.model.famille,
-    'fields': {
-      '30': 'fam_nom'
-    }
-  },
-  'Famille': {
-    'model': Container.model.famille,
-    'associated': [
+    'fields': [
       {
-        'model': Container.model.famille,
-        'fieldName': 'fam_nom',
-        'index': '30',
-        'associatedFunction': 'addFamille'
-      } 
-    ],
-    'fields': {
-      '31': 'fam_nom'
-     }
-   }
+        'index': 5,
+        'fieldName': 'mod_nom'
+      },
+      {
+        'index': 6,
+        'fieldName': 'mod_dated'
+      },
+      {
+        'index': 7,
+        'fieldName': 'mod_datef'
+      },
+      {
+        'index': 22,
+        'fieldName': 'mod_nbporte'
+      },
+      {
+        'index': 21,
+        'fieldName': 'mod_typecarrosserie'
+      }
+    ]
+  }
+  // 'Origin': {
+  //   'model': Container.model.origin,
+  //   'fields': [
+  //     {
+  //       'index': 29,
+  //       'fieldName': 'ori_nom'
+  //     }
+  //   ]
+  // },
+  // 'Famille': {
+  //   'model': Container.model.famille,
+  //   'fields': [
+  //     {
+  //       'index': 30,
+  //       'fieldName': 'fam_nom'
+  //     }
+  //   ]
+  //  },
+  // 'Famille2': {
+  //   'model': Container.model.famille,
+  //   'associated': [
+  //     {
+  //       'model': Container.model.famille,
+  //       'fieldName': 'fam_nom',
+  //       'index': '30',
+  //       'associatedFunction': 'addFamille'
+  //     } 
+  //   ],
+  //   'fields': [
+  //     {
+  //       'index': 31,
+  //       'fieldName': 'fam_nom'
+  //     }
+  //   ]
+  // },
+  // 'Famille3': {
+  //   'model': Container.model.famille,
+  //   'associated': [
+  //     {
+  //       'model': Container.model.famille,
+  //       'fieldName': 'fam_nom',
+  //       'index': '31',
+  //       'associatedFunction': 'addFamille'
+  //     } 
+  //   ],
+  //   'fields': [
+  //     {
+  //       'index': 32,
+  //       'fieldName': 'fam_nom'
+  //     }
+  //   ]
+  // }
 };
 
 module.exports = schema;

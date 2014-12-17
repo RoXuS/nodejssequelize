@@ -1,8 +1,10 @@
 var famille = Container.db.define('famille', {
-  fam_nom: Container.Sequelize.STRING,
-  fam_parent: Container.Sequelize.STRING
+  fam_nom: {type: Container.Sequelize.STRING, unique: true}
 });
 
 famille.hasMany(Container.model.article);
-famille.hasMany(famille);
+famille.hasMany(famille, {
+  // foreignKeyConstraint: false,
+  // unique: false
+});
 module.exports = famille;
