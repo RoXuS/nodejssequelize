@@ -27,3 +27,4 @@ bin/npm
 data/*
 out
 reports
+config/config.js

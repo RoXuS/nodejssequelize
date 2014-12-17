@@ -9,7 +9,7 @@ var config = function(callback){
   .authenticate()
   .then(callback)
   .catch(function(e){
-      console.log(e,'Unable to connect to mysql server.')
+      console.log(e,'Unable to connect to postgres server.')
   });
 
 };
