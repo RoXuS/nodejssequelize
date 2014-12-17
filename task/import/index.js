@@ -35,10 +35,13 @@ var index = {
                 var buildObject = schema.model.build(object);
                 // Associated
                 if(schema.associated !== undefined) {
-                  var object = {};
-                  object[schema.associated.fieldName] = article[schema.associated.index];
-                  schema.associated.model.find(object).then(function(associatedObject){
-                    associatedObject[schema.associated.associatedFunction](buildObject);
+                  schema.associated.forEach(function(associated){
+                    var object = {};
+                    object[associated.fieldName] = article[associated.index];
+                    console.log(object);
+                    associated.model.find(object).then(function(associatedObject){
+                      associatedObject[associated.associatedFunction](buildObject);
+                    });
                   });
                 }
                 buildObject.save().then(function(){
