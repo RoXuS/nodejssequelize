@@ -4,5 +4,6 @@ var marque = Container.db.define('marque', {
 });
 
 marque.hasMany(Container.model.modele);
+Container.model.modele.belongsTo(marque);
 
 module.exports = marque;

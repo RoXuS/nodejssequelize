@@ -11,6 +11,4 @@ var fournisseur = Container.db.define('fournisseur', {
   fou_pv: Container.Sequelize.INTEGER
 });
 
-fournisseur.hasMany(Container.model.article);
-
 module.exports = fournisseur;

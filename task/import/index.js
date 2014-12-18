@@ -39,28 +39,37 @@ var index = {
               }
               console.log(object);
               var buildObject = schema.model.build(object);
-              // Associated
-              if(schema.associated !== undefined) {
-                schema.associated.forEach(function(associated){
-                  var object = {};
-                  object[associated.fieldName] = article[associated.index];
-                  console.log('assoc field')
-                  console.log(object);
-                  associated.model.find({where: object}).then(function(associatedObject){
-                    if(associatedObject !== null) {
-                      console.log('there is an assoc')
-                      associatedObject[associated.associatedFunction](buildObject);
-                    }
-                  });
-                });
-              }
+
 
               buildObject.save().then(function(){
-                setTimeout(function(){
-                callback2();
-                }, 100);
+
+                var q3 = async.queue(function(associatedQueue, callback){
+                    var associated = associatedQueue.associated;
+                    var object = {};
+                    object[associated.fieldName] = article[associated.index];
+                    console.log('assoc field')
+                    console.log(object);
+                    associated.model.find({where: object}).then(function(associatedObject){
+                      if(associatedObject !== null) {
+                        console.log('there is an assoc')
+                        associatedObject[associated.associatedFunction](buildObject);
+                        associatedObject.save().then(callback);
+                      }
+                    });
+                }, 1);
+
+                q3.drain = function(){
+                  callback2();
+                };
+                // Associated
+                if(schema.associated !== undefined) {
+                  schema.associated.forEach(function(associated){
+                    q3.push({associated: associated}, function(){});
+                  });
+                } else {
+                  callback2();
+                }
               }).catch(function(e){
-                console.log('blabla')
                   callback2();
               });
 
@@ -76,9 +85,7 @@ var index = {
 
           }, 1); 
 
-          q.drain = function() {
-            console.log('toto');
-          }
+          q.drain = function() {}
 
           articles.forEach(function(article) {
             if(i !== 0) {

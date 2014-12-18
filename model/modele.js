@@ -6,5 +6,4 @@ var modele = Container.db.define('modele', {
   mod_typecarrosserie: Container.Sequelize.STRING
 });
 
-modele.hasMany(Container.model.article);
 module.exports = modele;
