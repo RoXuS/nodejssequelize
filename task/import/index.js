@@ -28,7 +28,6 @@ var index = {
             var article = articleObject.article;
 
             var q2 = async.queue(function(keyObject, callback2){
-              console.log('/////////////////////////');
               var key = keyObject.key;
               var schema = parentSchema[key];
               var schemaFields = schema.fields;
@@ -37,7 +36,6 @@ var index = {
                   var value = schemaFields[schemaKey].fieldName
                   object[value] = article[schemaFields[schemaKey].index];
               }
-              console.log(object);
               var buildObject = schema.model.build(object);
 
 
@@ -47,11 +45,8 @@ var index = {
                     var associated = associatedQueue.associated;
                     var object = {};
                     object[associated.fieldName] = article[associated.index];
-                    console.log('assoc field')
-                    console.log(object);
                     associated.model.find({where: object}).then(function(associatedObject){
                       if(associatedObject !== null) {
-                        console.log('there is an assoc')
                         associatedObject[associated.associatedFunction](buildObject);
                         associatedObject.save().then(callback);
                       }

@@ -1,9 +1,9 @@
 var modele = Container.db.define('modele', {
-  mod_nom: Container.Sequelize.STRING,
-  mod_dated: Container.Sequelize.STRING,
-  mod_datef: Container.Sequelize.STRING,
-  mod_nbporte: Container.Sequelize.STRING,
-  mod_typecarrosserie: Container.Sequelize.STRING
+  nom: Container.Sequelize.STRING,
+  dated: Container.Sequelize.STRING,
+  datef: Container.Sequelize.STRING,
+  nbporte: Container.Sequelize.STRING,
+  typecarrosserie: Container.Sequelize.STRING
 });
 
 module.exports = modele;

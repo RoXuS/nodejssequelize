@@ -4,11 +4,11 @@ var schema = {
     'fields': [
       {
         'index': 3,
-        'fieldName': 'mar_label'
+        'fieldName': 'label'
       },
       {
         'index': 3,
-        'fieldName': 'mar_nom'
+        'fieldName': 'nom'
       }
     ]
     },
@@ -17,7 +17,7 @@ var schema = {
     'associated': [
       {
         'model': Container.model.marque,
-        'fieldName': 'mar_nom',
+        'fieldName': 'nom',
         'index': '3',
         'associatedFunction': 'addModele'
       } 
@@ -25,131 +25,198 @@ var schema = {
     'fields': [
       {
         'index': 5,
-        'fieldName': 'mod_nom'
+        'fieldName': 'nom'
       },
       {
         'index': 6,
-        'fieldName': 'mod_dated'
+        'fieldName': 'dated'
       },
       {
         'index': 7,
-        'fieldName': 'mod_datef'
+        'fieldName': 'datef'
       },
       {
         'index': 22,
-        'fieldName': 'mod_nbporte'
+        'fieldName': 'nbporte'
       },
       {
         'index': 21,
-        'fieldName': 'mod_typecarrosserie'
-      }
-    ]
-  },
-  'Origin': {
-    'model': Container.model.origin,
-    'fields': [
-      {
-        'index': 29,
-        'fieldName': 'ori_nom'
-      }
-    ]
-  },
-  'Famille': {
-    'model': Container.model.famille,
-    'fields': [
-      {
-        'index': 30,
-        'fieldName': 'fam_nom'
-      }
-    ]
-   },
-  'Famille2': {
-    'model': Container.model.famille,
-    'associated': [
-      {
-        'model': Container.model.famille,
-        'fieldName': 'fam_nom',
-        'index': '30',
-        'associatedFunction': 'addFamille'
-      } 
-    ],
-    'fields': [
-      {
-        'index': 31,
-        'fieldName': 'fam_nom'
-      }
-    ]
-  },
-  'Famille3': {
-    'model': Container.model.famille,
-    'associated': [
-      {
-        'model': Container.model.famille,
-        'fieldName': 'fam_nom',
-        'index': '31',
-        'associatedFunction': 'addFamille'
-      } 
-    ],
-    'fields': [
-      {
-        'index': 32,
-        'fieldName': 'fam_nom'
-      }
-    ]
-  },
-  'Article':{
-    'model': Container.model.article,
-    'fields': [
-      {
-        'index': 11,
-        'fieldName': 'web'
-      },
-      {
-        'index': 9,
-        'fieldName': 'designation'
-      },
-      {
-        'index': 12,
-        'fieldName': 'pvp'
-      },
-      {
-        'index': 35,
-        'fieldName': 'commentaire'
-      },
-      {
-        'index': 38,
-        'fieldName': 'commentaire1'
-      },
-      {
-        'index': 39,
-        'fieldName': 'commentaire2'
-      },
-      {
-        'index': 40,
-        'fieldName': 'commentaire3'
-      },
-      {
-        'index': 16,
-        'fieldName': 'referenceNrl'
-      },
-      {
-        'index': 17,
-        'fieldName': 'courteNrl'
-      },
-      {
-        'index': 18,
-        'fieldName': 'prixNrl'
-      },
-      {
-        'index': 37,
-        'fieldName': 'certificat'
-      },
-      {
-        'index': 36,
-        'fieldName': 'nature'
+        'fieldName': 'typecarrosserie'
       }
     ]
   }
+  // 'Origin': {
+  //   'model': Container.model.origin,
+  //   'fields': [
+  //     {
+  //       'index': 29,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  // },
+  // 'Fournisseur': {
+  //   'model': Container.model.fournisseur,
+  //   'fields': [
+  //     {
+  //       'index': 41,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  //  },
+  // 'Fournisseur1': {
+  //   'model': Container.model.fournisseur,
+  //   'fields': [
+  //     {
+  //       'index': 42,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  //  },
+  // 'Fournisseur2': {
+  //   'model': Container.model.fournisseur,
+  //   'fields': [
+  //     {
+  //       'index': 43,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  //  },
+  // 'Fournisseur3': {
+  //   'model': Container.model.fournisseur,
+  //   'fields': [
+  //     {
+  //       'index': 44,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  //  },
+  // 'Fournisseur4': {
+  //   'model': Container.model.fournisseur,
+  //   'fields': [
+  //     {
+  //       'index': 45,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  //  },
+  // 'Famille': {
+  //   'model': Container.model.famille,
+  //   'fields': [
+  //     {
+  //       'index': 30,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  //  },
+  // 'Famille2': {
+  //   'model': Container.model.famille,
+  //   'associated': [
+  //     {
+  //       'model': Container.model.famille,
+  //       'fieldName': 'nom',
+  //       'index': '30',
+  //       'associatedFunction': 'addFamille'
+  //     } 
+  //   ],
+  //   'fields': [
+  //     {
+  //       'index': 31,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  // },
+  // 'Famille3': {
+  //   'model': Container.model.famille,
+  //   'associated': [
+  //     {
+  //       'model': Container.model.famille,
+  //       'fieldName': 'nom',
+  //       'index': '31',
+  //       'associatedFunction': 'addFamille'
+  //     } 
+  //   ],
+  //   'fields': [
+  //     {
+  //       'index': 32,
+  //       'fieldName': 'nom'
+  //     }
+  //   ]
+  // },
+  // 'Article':{
+  //   'model': Container.model.article,
+  //   // 'associated': [
+  //   //   {
+  //   //     'model': Container.model.famille,
+  //   //     'fieldName': 'nom',
+  //   //     'index': '30',
+  //   //     'associatedFunction': 'addFamille'
+  //   //   },
+  //   //   {
+  //   //     'model': Container.model.famille,
+  //   //     'fieldName': 'nom',
+  //   //     'index': '31',
+  //   //     'associatedFunction': 'addFamille'
+  //   //   },
+  //   //
+  //   //   {
+  //   //     'model': Container.model.famille,
+  //   //     'fieldName': 'nom',
+  //   //     'index': '32',
+  //   //     'associatedFunction': 'addFamille'
+  //   //   } 
+  //   //
+  //   // ],
+  //   'fields': [
+  //     {
+  //       'index': 11,
+  //       'fieldName': 'web'
+  //     },
+  //     {
+  //       'index': 9,
+  //       'fieldName': 'designation'
+  //     },
+  //     {
+  //       'index': 12,
+  //       'fieldName': 'pvp'
+  //     },
+  //     {
+  //       'index': 35,
+  //       'fieldName': 'commentaire'
+  //     },
+  //     {
+  //       'index': 38,
+  //       'fieldName': 'commentaire1'
+  //     },
+  //     {
+  //       'index': 39,
+  //       'fieldName': 'commentaire2'
+  //     },
+  //     {
+  //       'index': 40,
+  //       'fieldName': 'commentaire3'
+  //     },
+  //     {
+  //       'index': 16,
+  //       'fieldName': 'referenceNrl'
+  //     },
+  //     {
+  //       'index': 17,
+  //       'fieldName': 'courteNrl'
+  //     },
+  //     {
+  //       'index': 18,
+  //       'fieldName': 'prixNrl'
+  //     },
+  //     {
+  //       'index': 37,
+  //       'fieldName': 'certificat'
+  //     },
+  //     {
+  //       'index': 36,
+  //       'fieldName': 'nature'
+  //     }
+  //   ]
+  // }
 };
 
 module.exports = schema;

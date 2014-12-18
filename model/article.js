@@ -1,7 +1,7 @@
 var article = Container.db.define('article', {
-  web: Container.Sequelize.BOOLEAN,
+  web: Container.Sequelize.FLOAT,
   designation: Container.Sequelize.STRING,
-  pvp: Container.Sequelize.INTEGER,
+  pvp: Container.Sequelize.STRING,
   referenceNrl: Container.Sequelize.STRING,
   // prixAniel: Container.Sequelize.INTEGER,
   commentaire: Container.Sequelize.TEXT,
@@ -16,6 +16,5 @@ var article = Container.db.define('article', {
   nature: Container.Sequelize.STRING,
   certificat: Container.Sequelize.STRING
 });
-
 
 module.exports = article;

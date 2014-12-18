@@ -14,8 +14,6 @@
     "commander": "^2.5.0",
     "excel-parser": "^0.2.2",
     "mysql": "*",
-    "pg": "^4.0.0",
-    "psql": "0.0.1",
     "sequelize": "^2.0.0-rc3"
   }
 }
