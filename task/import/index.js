@@ -38,17 +38,15 @@ var index = {
               }
               var buildObject = schema.model.build(object);
 
-
               buildObject.save().then(function(){
 
-                var q3 = async.queue(function(associatedQueue, callback){
+                var q3 = async.queue(function(associatedQueue, callback3){
                     var associated = associatedQueue.associated;
                     var object = {};
                     object[associated.fieldName] = article[associated.index];
                     associated.model.find({where: object}).then(function(associatedObject){
                       if(associatedObject !== null) {
-                        associatedObject[associated.associatedFunction](buildObject);
-                        associatedObject.save().then(callback);
+                        associatedObject[associated.function](buildObject).then(callback3).catch(callback3);
                       }
                     });
                 }, 1);
@@ -56,6 +54,7 @@ var index = {
                 q3.drain = function(){
                   callback2();
                 };
+
                 // Associated
                 if(schema.associated !== undefined) {
                   schema.associated.forEach(function(associated){
@@ -65,7 +64,7 @@ var index = {
                   callback2();
                 }
               }).catch(function(e){
-                  callback2();
+                callback2();
               });
 
             }, 1);
@@ -80,7 +79,9 @@ var index = {
 
           }, 1); 
 
-          q.drain = function() {}
+          q.drain = function() {
+            process.exit();
+          };
 
           articles.forEach(function(article) {
             if(i !== 0) {
