@@ -157,12 +157,20 @@ var schema = {
         'index': '31',
         'function': 'addArticle'
       },
-
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
         'index': '32',
         'function': 'addArticle'
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '32',
+        'function': 'addArticle',
+        'params': {
+          
+        }
       } 
     ],
     'fields': [
