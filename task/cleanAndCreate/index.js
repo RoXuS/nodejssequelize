@@ -11,7 +11,7 @@ var index = {
     Container.model.articlesfournisseurs = Container.db.define('articlesfournisseurs', 
                         {
                           prix: Container.Sequelize.STRING,
-                          reference: Container.Sequelize.STRING,
+                          reference: {type: Container.Sequelize.STRING, notNull: true, notEmpty: true, notIn: [["",''," "]]},
                           rse: Container.Sequelize.STRING
                         });
 

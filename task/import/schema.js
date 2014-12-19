@@ -166,11 +166,86 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '32',
+        'index': '41',
         'function': 'addArticle',
-        'params': {
-          
-        }
+        'params': [
+          {
+            'index': 13,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 14,
+            'fieldName': 'prix'
+          },   
+          {
+            'index': 15,
+            'fieldName': 'rse'
+          }   
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '44',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 19,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 20,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '45',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 23,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 24,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '42',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 25,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 26,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '43',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 27,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 28,
+            'fieldName': 'prix'
+          } 
+        ]
       } 
     ],
     'fields': [

@@ -46,7 +46,13 @@ var index = {
                     object[associated.fieldName] = article[associated.index];
                     associated.model.find({where: object}).then(function(associatedObject){
                       if(associatedObject !== null) {
-                        associatedObject[associated.function](buildObject).then(callback3).catch(callback3);
+                        var query = {};
+                        if(associated.params !== undefined) {
+                          associated.params.forEach(function(associatedObjectParams){
+                            query[associatedObjectParams.fieldName] = article[associatedObjectParams.index];
+                          });
+                        }
+                        associatedObject[associated.function](buildObject, query).then(callback3).catch(callback3);
                       }
                     });
                 }, 1);
