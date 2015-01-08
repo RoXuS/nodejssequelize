@@ -45,8 +45,8 @@ var schema = {
       }
     ]
   },
-  'Origin': {
-    'model': Container.model.origin,
+  'Fournisseur': {
+    'model': Container.model.fournisseur,
     'fields': [
       {
         'index': 29,
@@ -54,51 +54,6 @@ var schema = {
       }
     ]
   },
-  'Fournisseur': {
-    'model': Container.model.fournisseur,
-    'fields': [
-      {
-        'index': 41,
-        'fieldName': 'nom'
-      }
-    ]
-   },
-  'Fournisseur1': {
-    'model': Container.model.fournisseur,
-    'fields': [
-      {
-        'index': 42,
-        'fieldName': 'nom'
-      }
-    ]
-   },
-  'Fournisseur2': {
-    'model': Container.model.fournisseur,
-    'fields': [
-      {
-        'index': 43,
-        'fieldName': 'nom'
-      }
-    ]
-   },
-  'Fournisseur3': {
-    'model': Container.model.fournisseur,
-    'fields': [
-      {
-        'index': 44,
-        'fieldName': 'nom'
-      }
-    ]
-   },
-  'Fournisseur4': {
-    'model': Container.model.fournisseur,
-    'fields': [
-      {
-        'index': 45,
-        'fieldName': 'nom'
-      }
-    ]
-   },
   'Famille': {
     'model': Container.model.famille,
     'fields': [
@@ -166,7 +121,7 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '41',
+        'index': '29',
         'function': 'addArticle',
         'params': [
           {
@@ -186,7 +141,7 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '44',
+        'index': '29',
         'function': 'addArticle',
         'params': [
           {
@@ -202,7 +157,7 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '45',
+        'index': '29',
         'function': 'addArticle',
         'params': [
           {
@@ -218,7 +173,7 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '42',
+        'index': '29',
         'function': 'addArticle',
         'params': [
           {
@@ -234,7 +189,7 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '43',
+        'index': '29',
         'function': 'addArticle',
         'params': [
           {
