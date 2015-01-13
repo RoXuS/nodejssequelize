@@ -3,11 +3,11 @@ var schema = {
     'model': Container.model.marque,
     'fields': [
       {
-        'index': 3,
+        'index': 0,
         'fieldName': 'label'
       },
       {
-        'index': 3,
+        'index': 0,
         'fieldName': 'nom'
       }
     ]
@@ -18,29 +18,29 @@ var schema = {
       {
         'model': Container.model.marque,
         'fieldName': 'nom',
-        'index': '3',
+        'index': '0',
         'function': 'addModele'
       } 
     ],
     'fields': [
       {
-        'index': 5,
+        'index': 1,
         'fieldName': 'nom'
       },
       {
-        'index': 6,
+        'index': 2,
         'fieldName': 'dated'
       },
       {
-        'index': 7,
+        'index': 3,
         'fieldName': 'datef'
       },
       {
-        'index': 22,
+        'index': 4,
         'fieldName': 'nbporte'
       },
       {
-        'index': 21,
+        'index': 5,
         'fieldName': 'typecarrosserie'
       }
     ]
@@ -49,7 +49,61 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
+        'index': 17,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur2': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
+        'index': 20,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur3': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
+        'index': 23,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur4': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
+        'index': 26,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur5': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
         'index': 29,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur6': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
+        'index': 32,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur7': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
+        'index': 35,
         'fieldName': 'nom'
       }
     ]
@@ -58,7 +112,7 @@ var schema = {
     'model': Container.model.famille,
     'fields': [
       {
-        'index': 30,
+        'index': 6,
         'fieldName': 'nom'
       }
     ]
@@ -69,13 +123,13 @@ var schema = {
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '30',
+        'index': '6',
         'function': 'addFamille'
       } 
     ],
     'fields': [
       {
-        'index': 31,
+        'index': 7,
         'fieldName': 'nom'
       }
     ]
@@ -86,13 +140,13 @@ var schema = {
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '31',
+        'index': '7',
         'function': 'addFamille'
       } 
     ],
     'fields': [
       {
-        'index': 32,
+        'index': 8,
         'fieldName': 'nom'
       }
     ]
@@ -103,45 +157,47 @@ var schema = {
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '30',
+        'index': '6',
         'function': 'addArticle'
       },
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '31',
+        'index': '7',
+        'function': 'addArticle'
+      },
+      {
+        'model': Container.model.modele,
+        'fieldName': 'nom',
+        'index': '1',
         'function': 'addArticle'
       },
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '32',
+        'index': '8',
         'function': 'addArticle'
       },
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '29',
+        'index': '17',
         'function': 'addArticle',
         'params': [
           {
-            'index': 13,
+            'index': 16,
             'fieldName': 'reference'
           },  
           {
-            'index': 14,
+            'index': 18,
             'fieldName': 'prix'
-          },   
-          {
-            'index': 15,
-            'fieldName': 'rse'
-          }   
+          }
         ]
       },
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '29',
+        'index': '20',
         'function': 'addArticle',
         'params': [
           {
@@ -149,7 +205,7 @@ var schema = {
             'fieldName': 'reference'
           },  
           {
-            'index': 20,
+            'index': 21,
             'fieldName': 'prix'
           } 
         ]
@@ -157,11 +213,11 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '29',
+        'index': '23',
         'function': 'addArticle',
         'params': [
           {
-            'index': 23,
+            'index': 22,
             'fieldName': 'reference'
           },  
           {
@@ -173,7 +229,7 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '29',
+        'index': '26',
         'function': 'addArticle',
         'params': [
           {
@@ -189,6 +245,38 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
+        'index': '32',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 31,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 33,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '35',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 34,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 36,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
         'index': '29',
         'function': 'addArticle',
         'params': [
@@ -197,113 +285,43 @@ var schema = {
             'fieldName': 'reference'
           },  
           {
-            'index': 28,
+            'index': 30,
             'fieldName': 'prix'
           } 
         ]
       } 
     ],
-    'fields': [
+    'fields': [,
+      {
+        'index': 9,
+        'fieldName': 'commentaire'
+      },
+      {
+        'index': 10,
+        'fieldName': 'designation'
+      },
       {
         'index': 11,
         'fieldName': 'web'
-      },
-      {
-        'index': 9,
-        'fieldName': 'designation'
       },
       {
         'index': 12,
         'fieldName': 'pvp'
       },
       {
-        'index': 35,
-        'fieldName': 'commentaire'
+        'index': 14,
+        'fieldName': 'net'
       },
       {
-        'index': 38,
-        'fieldName': 'commentaire1'
+        'index': 15,
+        'fieldName': 'refoem'
       },
       {
-        'index': 39,
-        'fieldName': 'commentaire2'
-      },
-      {
-        'index': 40,
-        'fieldName': 'commentaire3'
-      },
-      {
-        'index': 16,
-        'fieldName': 'referenceNrl'
-      },
-      {
-        'index': 17,
-        'fieldName': 'courteNrl'
-      },
-      {
-        'index': 18,
-        'fieldName': 'prixNrl'
-      },
-      {
-        'index': 37,
-        'fieldName': 'certificat'
-      },
-      {
-        'index': 36,
-        'fieldName': 'nature'
+        'index': 13,
+        'fieldName': 'rse'
       }
     ]
   }
 };
 
 module.exports = schema;
-
-
-/* Unicité modele */
-/* Fournisseur 1 colonne ?? */
-/* Origins bien origine ?*/
-
-//
-//
-// ['WEB',
-//   'REF UNIQUE',
-//   'IMG',
-//   'MARQUE',
-//   'MODELE LONG',
-//   'MODELE',
-//   'DATE D',
-//   'DATE F',
-//   'DESIGNATION PAM',
-//   'DESIGNATION 2',
-//   'DESIGNATION PRASCO',
-//   'REF PAM',
-//   'PVP',
-//   'REF ANIEL',
-//   'PX VTE ANIEL',
-//   'RSEANIEL',
-//   'Ref NRL Originale',
-//   'REF NRL COURTE',
-//   'PX HA NRL',
-//   'REF PRASCO',
-//   'PX HA PRASCO',
-//   'TYPE CARROSSERIE',
-//   'NB PORTE',
-//   'HELLA',
-//   'PX HA HELLA',
-//   'MARELLI',
-//   'PX HA MARELLI',
-//   'VALEO',
-//   'PX HA VALEO',
-//   'ORIGINE',
-//   'FAMILLE PAM',
-//   'FAMILLE PAM 2',
-//   'FAMILLE PAM 3',
-//   'D/G',
-//   'AV/AR',
-//   'COMMENTAIRE',
-//   'NATURE',
-//   'CERTIFICAT',
-//   'COMMENTAIRE 1',
-//   'COMMENTAIRE 2',
-//   'COMMENTAIRE 3'
-// ]

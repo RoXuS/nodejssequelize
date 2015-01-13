@@ -11,7 +11,7 @@ var index = {
   process: function() {
     cleanAndCreate.process(function(){
       var excelParser = require('excel-parser');
-      var workbook = __dirname + '/../../test3.xls';
+      var workbook = __dirname + '/../../model.xls';
 
       excelParser.parse({
         inFile: workbook,
@@ -70,7 +70,39 @@ var index = {
                   callback2();
                 }
               }).catch(function(e){
-                callback2();
+                // FAIRE LE FIND
+                      var q3 = async.queue(function(associatedQueue, callback3){
+                          var associated = associatedQueue.associated;
+                          var object = {};
+                          object[associated.fieldName] = article[associated.index];
+                          console.log("totoo");
+                          console.log(object);
+                          console.log("totoo");
+                          associated.model.find({where: object}).then(function(associatedObject){
+                            if(associatedObject !== null) {
+                              var query = {};
+                              if(associated.params !== undefined) {
+                                associated.params.forEach(function(associatedObjectParams){
+                                  query[associatedObjectParams.fieldName] = article[associatedObjectParams.index];
+                                });
+                              }
+                              associatedObject[associated.function](buildObject, query).then(callback3).catch(callback3);
+                            }
+                          });
+                      }, 1);
+
+                      q3.drain = function(){
+                        callback2();
+                      };
+
+                      // Associated
+                      if(schema.associated !== undefined) {
+                        schema.associated.forEach(function(associated){
+                          q3.push({associated: associated}, function(){});
+                        });
+                      } else {
+                        callback2();
+                      }
               });
 
             }, 1);

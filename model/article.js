@@ -1,20 +1,11 @@
 var article = Container.db.define('article', {
-  web: Container.Sequelize.FLOAT,
+  web: {type: Container.Sequelize.STRING, unique: true},
   designation: Container.Sequelize.STRING,
   pvp: Container.Sequelize.STRING,
-  referenceNrl: Container.Sequelize.STRING,
-  // prixAniel: Container.Sequelize.INTEGER,
+  net: Container.Sequelize.STRING,
   commentaire: Container.Sequelize.TEXT,
-  commentaire1: Container.Sequelize.TEXT,
-  commentaire2: Container.Sequelize.TEXT,
-  commentaire3: Container.Sequelize.TEXT,
-  // referenceAniel: Container.Sequelize.STRING,
-  // rseAniel: Container.Sequelize.STRING,
-  courteNrl: Container.Sequelize.STRING,
-  // referencePrasco: Container.Sequelize.STRING,
-  // prixPrasco: Container.Sequelize.STRING,
-  nature: Container.Sequelize.STRING,
-  certificat: Container.Sequelize.STRING
+  refoem: Container.Sequelize.STRING,
+  rse: Container.Sequelize.STRING
 });
 
 module.exports = article;
