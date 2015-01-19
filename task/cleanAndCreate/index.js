@@ -1,7 +1,10 @@
 var index = {
   process: function(callback) {
-    Container.model.famille.hasMany(Container.model.famille, {foreignKeyConstraint: false});
+    Container.model.famillesfamilles = Container.db.define('famillesfamilles', {});
+    Container.model.famille.hasMany(Container.model.famille, {foreignKeyConstraint: false, through: Container.model.famillesfamilles});
+
     Container.model.marque.hasMany(Container.model.modele, {foreignKeyConstraint: true});
+
     Container.model.modele.belongsTo(Container.model.marque, {foreignKeyConstraint: true});
 
     Container.model.famille.hasMany(Container.model.article);

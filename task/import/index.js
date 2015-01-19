@@ -11,7 +11,7 @@ var index = {
   process: function() {
     cleanAndCreate.process(function(){
       var excelParser = require('excel-parser');
-      var workbook = __dirname + '/../../model.xls';
+      var workbook = __dirname + '/../../model2.xls';
 
       excelParser.parse({
         inFile: workbook,
@@ -33,13 +33,14 @@ var index = {
               var schemaFields = schema.fields;
               var object = {};
               for(schemaKey in schemaFields) {
-                  var value = schemaFields[schemaKey].fieldName
-                  object[value] = article[schemaFields[schemaKey].index];
+                var value = schemaFields[schemaKey].fieldName
+                object[value] = article[schemaFields[schemaKey].index];
               }
-              var buildObject = schema.model.build(object);
+              //var buildObject = schema.model.build(object);
 
-              buildObject.save().then(function(){
+              schema.model.findOrCreate({where: object}).then(function(buildObjects){
 
+                buildObject = buildObjects[0];
                 var q3 = async.queue(function(associatedQueue, callback3){
                     var associated = associatedQueue.associated;
                     var object = {};
@@ -70,7 +71,8 @@ var index = {
                   callback2();
                 }
               }).catch(function(e){
-                // FAIRE LE FIND
+                console.log(buildObject);
+                console.log(object);
                       var q3 = async.queue(function(associatedQueue, callback3){
                           var associated = associatedQueue.associated;
                           var object = {};
