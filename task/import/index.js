@@ -11,7 +11,7 @@ var index = {
   process: function() {
     cleanAndCreate.process(function(){
       var excelParser = require('excel-parser');
-      var workbook = __dirname + '/../../model2.xls';
+      var workbook = __dirname + '/../../model3.xls';
 
       excelParser.parse({
         inFile: workbook,
@@ -71,15 +71,10 @@ var index = {
                   callback2();
                 }
               }).catch(function(e){
-                console.log(buildObject);
-                console.log(object);
                       var q3 = async.queue(function(associatedQueue, callback3){
                           var associated = associatedQueue.associated;
                           var object = {};
                           object[associated.fieldName] = article[associated.index];
-                          console.log("totoo");
-                          console.log(object);
-                          console.log("totoo");
                           associated.model.find({where: object}).then(function(associatedObject){
                             if(associatedObject !== null) {
                               var query = {};
