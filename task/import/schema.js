@@ -3,11 +3,11 @@ var schema = {
     'model': Container.model.marque,
     'fields': [
       {
-        'index': 0,
+        'index': 3,
         'fieldName': 'label'
       },
       {
-        'index': 0,
+        'index': 3,
         'fieldName': 'nom'
       }
     ]
@@ -18,29 +18,29 @@ var schema = {
       {
         'model': Container.model.marque,
         'fieldName': 'nom',
-        'index': '0',
+        'index': '3',
         'function': 'addModele'
       } 
     ],
     'fields': [
       {
-        'index': 1,
+        'index': 4,
         'fieldName': 'nom'
       },
       {
-        'index': 2,
+        'index': 5,
         'fieldName': 'dated'
       },
       {
-        'index': 3,
+        'index': 6,
         'fieldName': 'datef'
       },
       {
-        'index': 4,
+        'index': 25,
         'fieldName': 'nbporte'
       },
       {
-        'index': 5,
+        'index': 24,
         'fieldName': 'typecarrosserie'
       }
     ]
@@ -49,7 +49,7 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 17,
+        'index': 14,
         'fieldName': 'nom'
       }
     ]
@@ -58,7 +58,7 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 20,
+        'index': 22,
         'fieldName': 'nom'
       }
     ]
@@ -67,7 +67,7 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 23,
+        'index': 27,
         'fieldName': 'nom'
       }
     ]
@@ -76,7 +76,7 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 26,
+        'index': 31,
         'fieldName': 'nom'
       }
     ]
@@ -85,7 +85,7 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 29,
+        'index': 34,
         'fieldName': 'nom'
       }
     ]
@@ -94,7 +94,7 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 32,
+        'index': 37,
         'fieldName': 'nom'
       }
     ]
@@ -103,7 +103,16 @@ var schema = {
     'model': Container.model.fournisseur,
     'fields': [
       {
-        'index': 35,
+        'index': 40,
+        'fieldName': 'nom'
+      }
+    ]
+  },
+  'Fournisseur8': {
+    'model': Container.model.fournisseur,
+    'fields': [
+      {
+        'index': 18,
         'fieldName': 'nom'
       }
     ]
@@ -112,7 +121,7 @@ var schema = {
     'model': Container.model.famille,
     'fields': [
       {
-        'index': 6,
+        'index': 42,
         'fieldName': 'nom'
       }
     ]
@@ -123,13 +132,13 @@ var schema = {
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '6',
+        'index': '42',
         'function': 'addFamille'
       } 
     ],
     'fields': [
       {
-        'index': 7,
+        'index': 43,
         'fieldName': 'nom'
       }
     ]
@@ -140,13 +149,13 @@ var schema = {
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '7',
+        'index': '43',
         'function': 'addFamille'
       } 
     ],
     'fields': [
       {
-        'index': 8,
+        'index': 44,
         'fieldName': 'nom'
       }
     ]
@@ -157,39 +166,39 @@ var schema = {
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '6',
+        'index': '42',
         'function': 'addArticle'
       },
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '7',
+        'index': '43',
         'function': 'addArticle'
       },
       {
         'model': Container.model.modele,
         'fieldName': 'nom',
-        'index': '1',
+        'index': '4',
         'function': 'addArticle'
       },
       {
         'model': Container.model.famille,
         'fieldName': 'nom',
-        'index': '8',
+        'index': '44',
         'function': 'addArticle'
       },
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '17',
+        'index': '14',
         'function': 'addArticle',
         'params': [
           {
-            'index': 16,
+            'index': 13,
             'fieldName': 'reference'
           },  
           {
-            'index': 18,
+            'index': 15,
             'fieldName': 'prix'
           }
         ]
@@ -197,15 +206,15 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '20',
+        'index': '22',
         'function': 'addArticle',
         'params': [
-          {
-            'index': 19,
-            'fieldName': 'reference'
-          },  
           {
             'index': 21,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 23,
             'fieldName': 'prix'
           } 
         ]
@@ -213,31 +222,15 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '23',
+        'index': '27',
         'function': 'addArticle',
         'params': [
-          {
-            'index': 22,
-            'fieldName': 'reference'
-          },  
-          {
-            'index': 24,
-            'fieldName': 'prix'
-          } 
-        ]
-      },
-      {
-        'model': Container.model.fournisseur,
-        'fieldName': 'nom',
-        'index': '26',
-        'function': 'addArticle',
-        'params': [
-          {
-            'index': 25,
-            'fieldName': 'reference'
-          },  
           {
             'index': 26,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 28,
             'fieldName': 'prix'
           } 
         ]
@@ -245,47 +238,79 @@ var schema = {
       {
         'model': Container.model.fournisseur,
         'fieldName': 'nom',
-        'index': '32',
+        'index': '31',
         'function': 'addArticle',
         'params': [
-          {
-            'index': 31,
-            'fieldName': 'reference'
-          },  
-          {
-            'index': 33,
-            'fieldName': 'prix'
-          } 
-        ]
-      },
-      {
-        'model': Container.model.fournisseur,
-        'fieldName': 'nom',
-        'index': '35',
-        'function': 'addArticle',
-        'params': [
-          {
-            'index': 34,
-            'fieldName': 'reference'
-          },  
-          {
-            'index': 36,
-            'fieldName': 'prix'
-          } 
-        ]
-      },
-      {
-        'model': Container.model.fournisseur,
-        'fieldName': 'nom',
-        'index': '29',
-        'function': 'addArticle',
-        'params': [
-          {
-            'index': 27,
-            'fieldName': 'reference'
-          },  
           {
             'index': 30,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 32,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '34',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 33,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 35,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '37',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 36,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 38,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '40',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 39,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 41,
+            'fieldName': 'prix'
+          } 
+        ]
+      },
+      {
+        'model': Container.model.fournisseur,
+        'fieldName': 'nom',
+        'index': '18',
+        'function': 'addArticle',
+        'params': [
+          {
+            'index': 17,
+            'fieldName': 'reference'
+          },  
+          {
+            'index': 19,
             'fieldName': 'prix'
           } 
         ]
@@ -293,31 +318,35 @@ var schema = {
     ],
     'fields': [,
       {
-        'index': 9,
+        'index': 45,
         'fieldName': 'commentaire'
       },
       {
-        'index': 10,
+        'index': 7,
         'fieldName': 'designation'
       },
       {
-        'index': 11,
+        'index': 9,
+        'fieldName': 'description'
+      },
+      {
+        'index': 1,
         'fieldName': 'web'
       },
       {
-        'index': 12,
+        'index': 10,
         'fieldName': 'pvp'
       },
       {
-        'index': 14,
+        'index': 12,
         'fieldName': 'net'
       },
       {
-        'index': 15,
+        'index': 29,
         'fieldName': 'refoem'
       },
       {
-        'index': 13,
+        'index': 11,
         'fieldName': 'rse'
       }
     ]

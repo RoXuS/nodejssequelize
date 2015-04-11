@@ -1,6 +1,7 @@
 var article = Container.db.define('article', {
   web: {type: Container.Sequelize.STRING, unique: true},
   designation: Container.Sequelize.STRING,
+  description: Container.Sequelize.STRING,
   pvp: Container.Sequelize.STRING,
   net: Container.Sequelize.STRING,
   commentaire: Container.Sequelize.TEXT,

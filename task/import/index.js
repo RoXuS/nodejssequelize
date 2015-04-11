@@ -11,7 +11,7 @@ var index = {
   process: function() {
     cleanAndCreate.process(function(){
       var excelParser = require('excel-parser');
-      var workbook = __dirname + '/../../model3.xls';
+      var workbook = __dirname + '/../../test.xls';
 
       excelParser.parse({
         inFile: workbook,

@@ -11,107 +11,109 @@ var async = require('async');
 // });
 var index = {
   process: function() {
-  //   Container.model.marque.findAll({}).then(function(marques){
-  //     var input = [];
-  //
-  //     marques.forEach(function(marque){
-  //       var newMarque = [];
-  //       newMarque.push(1);
-  //       newMarque.push(marque.nom);
-  //       newMarque.push('Accueil');
-  //       newMarque.push(0);
-  //       input.push(newMarque);
-  //     });
-  //
-  //     stringify(input, function(err, output){
-  //       fs.writeFileSync(__dirname+'/output/marques.csv', output)
-  //     });
-  //
-  //   });
-  //
-  //   Container.model.modele.findAll({}).then(function(modeles){
-  //     var input = [];
-  //     
-  //     var q = async.queue(function(modeleObject, callback){
-  //         input.push(modeleObject.newModele);
-  //         callback();
-  //     });
-  //
-  //     modeles.forEach(function(modele){
-  //       var newModele = [];
-  //       modele.getMarque().then(function(marque){
-  //         newModele.push(1);
-  //         newModele.push(modele.nom);
-  //         newModele.push(marque.nom);
-  //         newModele.push(0);
-  //         q.push({newModele: newModele})
-  //       });
-  //     });
-  //
-  //     q.drain = function(){
-  //       stringify(input, function(err, output){
-  //         fs.writeFileSync(__dirname+'/output/modeles.csv', output)
-  //       });
-  //     }
-  //
-  //   });
-  //
-  //   var processFamille = function(q, newFamille, familleId, familleNom) {
-  //     Container.model.famille.find({where: {id: familleId}}).then(function(famille){
-  //       newFamille.push(1);
-  //       newFamille.push(familleNom);
-  //       newFamille.push(famille.nom);
-  //       newFamille.push(0);
-  //       q.push({newFamille: newFamille})
-  //     });
-  //   };
-  //   Container.model.famille.findAll({}).then(function(familles){
-  //     var input = [];
-  //     
-  //     var q = async.queue(function(familleObject, callback){
-  //         input.push(familleObject.newFamille);
-  //         callback();
-  //     });
-  //
-  //     familles.forEach(function(famille){
-  //       var newFamille = [];
-  //
-  //       if(famille.nom !== '') {
-  //         if(famille.dataValues.familleId === null) {
-  //             newFamille.push(1);
-  //             newFamille.push(famille.nom);
-  //             newFamille.push('');
-  //             newFamille.push(0);
-  //             q.push({newFamille: newFamille})
-  //         } else {
-  //           processFamille(q, newFamille, famille.dataValues.familleId, famille.nom);
-  //         }
-  //       }
-  //     });
-  //
-  //     q.drain = function(){
-  //       stringify(input, function(err, output){
-  //         fs.writeFileSync(__dirname+'/output/familles.csv', output)
-  //       });
-  //     }
-  //
-  //   });
-  //
-  // Container.model.fournisseur.findAll({}).then(function(fournisseurs){
-  //   var input = [];
-  //
-  //   fournisseurs.forEach(function(fournisseur){
-  //     var newFournisseur = [];
-  //     newFournisseur.push(1);
-  //     newFournisseur.push(fournisseur.nom);
-  //     input.push(newFournisseur);
-  //   });
-  //
-  //   stringify(input, function(err, output){
-  //     fs.writeFileSync(__dirname+'/output/fournisseur.csv', output)
-  //   });
-  //
-  // });
+    Container.model.marque.findAll({}).then(function(marques){
+      var input = [];
+      var p = 0;
+
+      marques.forEach(function(marque){
+        var newMarque = [];
+        newMarque.push(1);
+        newMarque.push(marque.nom);
+        newMarque.push('Accueil');
+        newMarque.push(0);
+        input.push(newMarque);
+      });
+
+      stringify(input, function(err, marqueOutput){
+        Container.model.modele.findAll({}).then(function(modeles){
+          var input = [];
+
+          var q = async.queue(function(modeleObject, callback){
+              input.push(modeleObject.newModele);
+              callback();
+          });
+
+          modeles.forEach(function(modele){
+            var newModele = [];
+            modele.getMarque().then(function(marque){
+              newModele.push(1);
+              newModele.push(((isNaN(modele.nom)) ? modele.nom : parseInt(modele.nom, 10)+"categ"));
+              newModele.push(marque.nom);
+              newModele.push(0);
+              q.push({newModele: newModele})
+            });
+          });
+
+          q.drain = function(){
+            stringify(input, function(err, modeleOutput){
+              var processFamille = function(q, newFamille, familleId, familleNom) {
+                Container.model.famille.find({where: {id: familleId}}).then(function(famille){
+                  newFamille.push(1);
+                  newFamille.push(familleNom);
+                  newFamille.push(famille.nom);
+                  newFamille.push(0);
+                  q.push({newFamille: newFamille})
+                });
+              };
+              Container.model.famille.findAll({}).then(function(familles){
+                var input = [];
+
+                var q = async.queue(function(familleObject, callback){
+                    input.push(familleObject.newFamille);
+                    callback();
+                });
+
+                familles.forEach(function(famille){
+                  var newFamille = [];
+
+                  if(famille.nom !== '') {
+                    if(famille.dataValues.familleId === null) {
+                        newFamille.push(1);
+                        newFamille.push(famille.nom);
+                        newFamille.push('');
+                        newFamille.push(0);
+                        q.push({newFamille: newFamille})
+                    } else {
+                      processFamille(q, newFamille, famille.dataValues.familleId, famille.nom);
+                    }
+                  }
+                });
+
+                q.drain = function(){
+                  stringify(input, function(err, familleOutput){
+                    var output = marqueOutput + modeleOutput + familleOutput;
+                    fs.writeFileSync(__dirname+'/output/categories.csv', output)
+                  });
+                }
+
+              });
+            });
+          }
+
+        });
+      });
+
+    });
+
+
+
+
+
+  Container.model.fournisseur.findAll({}).then(function(fournisseurs){
+    var input = [];
+
+    fournisseurs.forEach(function(fournisseur){
+      var newFournisseur = [];
+      newFournisseur.push(1);
+      newFournisseur.push(fournisseur.nom);
+      input.push(newFournisseur);
+    });
+
+    stringify(input, function(err, output){
+      fs.writeFileSync(__dirname+'/output/fournisseur.csv', output)
+    });
+
+  });
 
   Container.model.article.findAll({}).then(function(articles){
     var input = [];
@@ -121,7 +123,7 @@ var index = {
       input.push(articleObject.article);
       callback();
     }, 1);
-    
+
     q2.drain = function(){
        stringify(input, function(err, output){
         fs.writeFileSync(__dirname+'/output/article.csv', output)
@@ -134,7 +136,7 @@ var index = {
       var q = async.queue(function(categorieObject, callback){
         var categorie = categorieObject.categorie;
         if(categorie && categorie !== '') {
-          categories += categorie + ",";
+          categories += ((isNaN(categorie)) ? categorie : parseInt(categorie, 10)+"categ") + ",";
         }
         callback();
       }, 1);
@@ -207,7 +209,7 @@ var index = {
         newArticle.push(article.commentaire);
 
         q2.push({article: newArticle});
-     
+
       }
     });
 
