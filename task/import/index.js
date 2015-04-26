@@ -45,17 +45,29 @@ var index = {
                     var associated = associatedQueue.associated;
                     var object = {};
                     object[associated.fieldName] = article[associated.index];
-                    associated.model.find({where: object}).then(function(associatedObject){
-                      if(associatedObject !== null) {
-                        var query = {};
-                        if(associated.params !== undefined) {
-                          associated.params.forEach(function(associatedObjectParams){
-                            query[associatedObjectParams.fieldName] = article[associatedObjectParams.index];
-                          });
+                    if(object[associated.fieldName].trim() !== '') {
+                      console.log('raerezfrezrz')
+                      console.log(object)
+                      associated.model.find({where: object}).then(function(associatedObject){
+                        console.log('dsghhre')
+                        if(associatedObject !== null) {
+                          var query = {};
+                          if(associated.params !== undefined) {
+                            associated.params.forEach(function(associatedObjectParams){
+                              query[associatedObjectParams.fieldName] = article[associatedObjectParams.index];
+                            });
+                          }
+                          console.log('titi')
+                          associatedObject[associated.function](buildObject, query).then(function(){
+                            console.log('tata')
+                            callback3();
+                          }).catch(function(err, err1){console.log('ICI3'); callback3()});
                         }
-                        associatedObject[associated.function](buildObject, query).then(callback3).catch(callback3);
-                      }
-                    });
+                      }).catch(function(err,err1){console.log('ICI2'); callback3();});
+                    } else {
+                      console.log('ICI');
+                      callback3();
+                    }
                 }, 1);
 
                 q3.drain = function(){
@@ -71,35 +83,38 @@ var index = {
                   callback2();
                 }
               }).catch(function(e){
-                      var q3 = async.queue(function(associatedQueue, callback3){
-                          var associated = associatedQueue.associated;
-                          var object = {};
-                          object[associated.fieldName] = article[associated.index];
-                          associated.model.find({where: object}).then(function(associatedObject){
-                            if(associatedObject !== null) {
-                              var query = {};
-                              if(associated.params !== undefined) {
-                                associated.params.forEach(function(associatedObjectParams){
-                                  query[associatedObjectParams.fieldName] = article[associatedObjectParams.index];
-                                });
-                              }
-                              associatedObject[associated.function](buildObject, query).then(callback3).catch(callback3);
-                            }
-                          });
-                      }, 1);
 
-                      q3.drain = function(){
-                        callback2();
-                      };
-
-                      // Associated
-                      if(schema.associated !== undefined) {
-                        schema.associated.forEach(function(associated){
-                          q3.push({associated: associated}, function(){});
+                var q3 = async.queue(function(associatedQueue, callback3){
+                  var associated = associatedQueue.associated;
+                  var object = {};
+                  object[associated.fieldName] = article[associated.index];
+                  associated.model.find({where: object}).then(function(associatedObject){
+                    if(associatedObject !== null) {
+                      var query = {};
+                      if(associated.params !== undefined) {
+                        associated.params.forEach(function(associatedObjectParams){
+                          query[associatedObjectParams.fieldName] = article[associatedObjectParams.index];
                         });
-                      } else {
-                        callback2();
                       }
+                      associatedObject[associated.function](buildObject, query).then(callback3).catch(function(){console.log('ICI4'); callback3()});
+                    }
+                  }).catch(function(err,err1){
+                      console.log('ICI');
+                      callback3();});
+                }, 1);
+
+                q3.drain = function(){
+                  callback2();
+                };
+
+                // Associated
+                if(schema.associated !== undefined) {
+                  schema.associated.forEach(function(associated){
+                    q3.push({associated: associated}, function(){});
+                  });
+                } else {
+                  callback2();
+                }
               });
 
             }, 1);
