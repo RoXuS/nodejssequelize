@@ -11,7 +11,7 @@ var config = require(__dirname + '/config/config.js')(function() {
       .version('0.0.1')
       .usage('[options] <keywords>')
       .option('-i, --import [value]', 'Launch an import')
-      .option('-p, --prestashop', 'Launch generation of prestashop file')
+      .option('-p, --prestashop [value]', 'Launch generation of prestashop file')
       .option('-c, --cleanAndCreate', 'Create and clean your tables')
       .parse(process.argv);
 
@@ -20,7 +20,7 @@ var config = require(__dirname + '/config/config.js')(function() {
     } else if (program.cleanAndCreate) {
       require(__dirname + '/task/cleanAndCreate/index.js').process();
     } else if (program.prestashop) {
-      require(__dirname + '/task/prestashop/index.js').process();
+      require(__dirname + '/task/prestashop/index.js').process(program.prestashop);
     }
   });
 });
