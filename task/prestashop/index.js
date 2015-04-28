@@ -117,7 +117,6 @@ var index = {
       });
     } else if (type === 'article') {
       Container.model.article.findAll({}).then(function(articles){
-console.log(articles.length);
         var input = [];
         var first = 0;
 
@@ -134,13 +133,9 @@ console.log(articles.length);
             callback();
           }, 1);
 
-          console.log(article.web);
-          console.log('get famille');
           article.getFamilles().then(function(familles){
-            console.log('get modele');
             article.getModeles().then(function(modeles){
               var executed = 0;
-              console.log('for each modele get marque')
               modeles.forEach(function(modele){
                 modele.getMarque().then(function(marque){
                   if(executed === 0) {
@@ -182,7 +177,7 @@ console.log(articles.length);
               //Image:
               newArticle.push('Image');
 
-              input.push({article: newArticle});
+              input.push(newArticle);
               newArticle = [];
 
             }
@@ -244,15 +239,13 @@ console.log(imageUrl);
               newArticle.push(imageUrl);
 
               input.push(newArticle);
-console.log(input);
 
               stringify(input, function(err, output){
-console.log(output);
-process.exit();
                 fs.writeFileSync(__dirname+'/output/article.csv', output)
               });
 
             }).catch(function(err){
+console.log('toto', err)
               //Active
               newArticle.push(1);
               //Name
@@ -275,7 +268,7 @@ process.exit();
               //Image
               newArticle.push(imageUrl);
 
-              input.push({article: newArticle});
+              input.push(newArticle);
 
               stringify(input, function(err, output){
                 fs.writeFileSync(__dirname+'/output/article.csv', output)
